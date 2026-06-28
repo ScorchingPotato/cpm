@@ -174,14 +174,11 @@ int main(int argc, char *argv[]) {
 
   switch (c.cmd) {
     case INIT:
-      init(c.opt,c.arg);
-      break;
+      return init(c.opt,c.arg);
     case BUILD:
-      build(c.opt,cnf);
-      break;
+      return build(c.opt,cnf);
     case UPDATE:
-      update(c.opt,cnf);
-      break;
+      return update(c.opt,cnf);
   }
 
   freeConfig(cnf);

@@ -24,6 +24,12 @@ int build(char opt, struct Config* cnf) {
   bool run = opt & 0b00000100;
   bool debug = opt & 0b00001000;
   bool clean = opt & 0b00010000;
+
+  if (cnf == NULL) {
+    fprintf(stderr, "Configuration file 'project.conf' missing. Aborting\n");
+    return 1;
+  }
+  
   bool make = !strcmp(getConfigVal(cnf->build, "backend"), "make");
   char* out = getConfigVal(cnf->build, "output");
   char* cc = getConfigVal(cnf->build, "compiler");

@@ -10,6 +10,11 @@ int update(char opt, struct Config* cnf) {
   bool pull = opt & 0b00000100;
   bool make = opt & 0b00010000;
 
+  if (cnf == NULL) {
+    fprintf(stderr, "Configuration file 'project.conf' missing. Aborting\n");
+    return 1;
+  }
+
   struct Import* imports = parseImports(cnf->deps, cnf->depc);
 
   if (make) {

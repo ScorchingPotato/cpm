@@ -152,6 +152,7 @@ void freeEntry(Entry e) {
 }
 
 void freeConfig(struct Config* c) {
+  if (c == NULL) return;
   //Clear Project Graph
   for (int i=0; i < c->project.entrc; i++) {
    freeEntry(c->project.entries[i]);
